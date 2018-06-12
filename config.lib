@@ -3130,7 +3130,7 @@ detect_cputype() {
 	echo "#include \"src/stdafx.h\"" >> tmp.64bit.cpp
 	echo "assert_compile(sizeof(size_t) == 8);" >> tmp.64bit.cpp
 	echo "int main() { return 0; }" >> tmp.64bit.cpp
-	execute="$cxx_host $CFLAGS tmp.64bit.cpp -o tmp.64bit -DTESTING 2>&1"
+	execute="$cxx_host -I$ROOT_DIR $CFLAGS tmp.64bit.cpp -o tmp.64bit -DTESTING 2>&1"
 	cpu_type="`eval $execute 2>/dev/null`"
 	ret=$?
 	log 2 "executing $execute"

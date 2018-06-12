@@ -61,13 +61,14 @@ ifeq ($(OS),UNIX)
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.bmp" "$(BASESET_DIR)/"
 endif
 	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
-	$(Q)cp "$(BIN_DIR)/ai/"compat_*.nut       "$(AI_DIR)/"
-	$(Q)cp "$(BIN_DIR)/game/"compat_*.nut     "$(GAME_DIR)/"
-	$(Q)cp "$(BIN_DIR)/baseset/"*.grf         "$(BASESET_DIR)/"
-	$(Q)cp "$(BIN_DIR)/baseset/"*.obg         "$(BASESET_DIR)/"
-	$(Q)cp "$(BIN_DIR)/baseset/"*.obs         "$(BASESET_DIR)/"
-	$(Q)cp "$(BIN_DIR)/baseset/opntitle.dat"  "$(BASESET_DIR)/"
-	$(Q)cp "$(BIN_DIR)/baseset/"*.obm         "$(BASESET_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/ai/"compat_*.nut  "$(AI_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/game/"compat_*.nut "$(GAME_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/baseset/"*.grf    "$(BASESET_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/baseset/"*.obg    "$(BASESET_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/baseset/"*.obs    "$(BASESET_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/baseset/opntitle.dat" "$(BASESET_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/bin/baseset/"*.obm    "$(BASESET_DIR)/"
+	$(Q)cp "$(BIN_DIR)/baseset/"*    	  "$(BASESET_DIR)/"
 	$(Q)cp "$(BIN_DIR)/lang/"*.lng            "$(LANG_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/readme.txt"           "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
@@ -81,9 +82,9 @@ ifdef MAN_DIR
 endif
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd."*.png  "$(BUNDLE_DIR)/media/"
-	$(Q)cp "$(BIN_DIR)/scripts/"*             "$(BUNDLE_DIR)/scripts/"
+	$(Q)cp "$(ROOT_DIR)/bin/scripts/"*        "$(BUNDLE_DIR)/scripts/"
 ifdef MENU_DIR
-	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
+	$(Q)cp "$(CURDIR)/media/openttd.desktop"  "$(BUNDLE_DIR)/media/"
 	$(Q)$(AWK) -f "$(ROOT_DIR)/media/openttd.desktop.translation.awk" "$(SRC_DIR)/lang/"*.txt | LC_ALL=C $(SORT) |  $(AWK) -f "$(ROOT_DIR)/media/openttd.desktop.filter.awk" >> "$(BUNDLE_DIR)/media/openttd.desktop"
 	$(Q)sed s/=openttd/=$(BINARY_NAME)/g "$(BUNDLE_DIR)/media/openttd.desktop" > "$(ROOT_DIR)/media/openttd.desktop.install"
 endif

@@ -248,6 +248,7 @@ $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 
 $(BIN_DIR)/$(TTD): $(TTD)
 	$(Q)cp $(TTD) $(BIN_DIR)/$(TTD)
+	$(Q)mkdir -p $(BIN_DIR)/baseset
 ifeq ($(OS), UNIX)
 	$(Q)cp $(MEDIA_DIR)/openttd.32.bmp $(BIN_DIR)/baseset/
 endif

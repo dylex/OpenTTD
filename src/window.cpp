@@ -101,6 +101,8 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	pref_sticky(false),
 	pref_width(0),
 	pref_height(0),
+	pref_left(-1),
+	pref_top(-1),
 	default_width_trad(def_width_trad),
 	default_height_trad(def_height_trad)
 {
@@ -691,7 +693,17 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_CAPTION: // 'Title bar'
-			StartWindowDrag(w);
+			if (_ctrl_pressed) {
+				if (_shift_pressed) {
+					w->window_desc->pref_left = -1;
+					w->window_desc->pref_top = -1;
+				} else {
+					w->window_desc->pref_left = w->left;
+					w->window_desc->pref_top = w->top;
+				}
+			} else {
+				StartWindowDrag(w);
+			}
 			return;
 
 		case WWT_RESIZEBOX:
@@ -1732,11 +1744,15 @@ Point GetToolbarAlignedWindowPosition(int window_width)
  */
 static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 {
-	Point pt;
+	Point pt = { desc->pref_left, desc->pref_top };
 	const Window *w;
 
 	int16 default_width  = max(desc->GetDefaultWidth(),  sm_width);
 	int16 default_height = max(desc->GetDefaultHeight(), sm_height);
+
+	if (pt.y >= 0 && pt.y < _screen.height &&
+			pt.x >= 10-default_width && pt.x < _screen.width-10)
+		return pt;
 
 	if (desc->parent_cls != 0 /* WC_MAIN_WINDOW */ && (w = FindWindowById(desc->parent_cls, window_number)) != NULL) {
 		bool rtl = _current_text_dir == TD_RTL;

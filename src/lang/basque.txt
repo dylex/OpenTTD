@@ -869,7 +869,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Leihoa {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Leihora kopiatu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK} Leiho nagusian ikusten dena leiho honetara kopiatu
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Leihotik kpiatutakoa itsatsi
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Aldatu ikuspen nagusia
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Leiho honetan ikusten dena leiho nagusian itsasi
 
 # Game options window
@@ -1224,6 +1224,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Beste konpainie
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin da aldatu ibilgailuak daudenean
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Azpiegituren mantentze-lana: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Gaitua dagoenean, azpiegiturek mantentze kostuak eragiten dituzte. Kostuak garraio sarearekin proportzionalki hazten dira, hau da, kostu handiagoak izango dituzten konpainia handiagoek
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aireportuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Gaitua badago, aireportu mota ezberdinak betirako egongo dira aukeran
@@ -2589,6 +2590,8 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_TRAINS                                         :{WHITE}  Trenen tick-ak:
+STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Itsasontzien tick-ak:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -3009,6 +3012,7 @@ STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}
 STR_STATION_VIEW_GROUP                                          :{BLACK}Taldekatu
 STR_STATION_VIEW_WAITING_STATION                                :Geltokia: Itxaroten
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Kopurua: Itxoiten
+STR_STATION_VIEW_PLANNED_STATION                                :Geltokia: Antolatua
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION}-tik
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT}{STATION}-tik
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}{STATION}-ra
@@ -3170,17 +3174,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Ikuspegi
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ekoizpen kopurua: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industriak berehalako itxiera iragarri du!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Ekoizpena: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Ekoizpena: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ekoizpena aldatu (8 eta 2040 arteko multiploa)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ekoizpen ehunekoa aldatu (ehunekoa, %800 arte)
@@ -4073,7 +4067,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Geltoki 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tren geltoki zati gehiegi
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Autobus geltoki gehiegi
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Kamioi geltoki gehiegi
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Geltoki batetik hurbilegi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Kai batetik hurbilegi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Aireportu batetik hurbilegi
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ezinda geltokia berrizendatu...

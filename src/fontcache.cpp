@@ -210,6 +210,7 @@ class FreeTypeFontCache : public FontCache {
 private:
 	FT_Face face;  ///< The font face associated with this font.
 	int req_size;  ///< Requested font size.
+	int used_size; ///< Used font size.
 
 	typedef SmallMap<uint32, SmallPair<size_t, const void*> > FontTable; ///< Table with font table cache
 	FontTable font_tables; ///< Cached font tables.
@@ -243,6 +244,7 @@ private:
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
+	virtual int GetFontSize() const { return this->used_size; }
 	virtual SpriteID GetUnicodeGlyph(WChar key) { return this->parent->GetUnicodeGlyph(key); }
 	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite) { this->parent->SetUnicodeGlyph(key, sprite); }
 	virtual void InitializeUnicodeGlyphMap() { this->parent->InitializeUnicodeGlyphMap(); }
@@ -291,6 +293,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 			pixels = Clamp(min(head->Lowest_Rec_PPEM, 20) + diff, scaled_height, MAX_FONT_SIZE);
 		}
 	}
+	this->used_size = pixels;
 
 	FT_Error err = FT_Set_Pixel_Sizes(this->face, 0, pixels);
 	if (err != FT_Err_Ok) {
@@ -543,7 +546,7 @@ const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
 			return glyph->sprite;
 		}
 	}
-	FT_Load_Glyph(this->face, key, FT_LOAD_DEFAULT);
+	FT_Load_Glyph(this->face, key, aa ? FT_LOAD_TARGET_NORMAL : FT_LOAD_TARGET_MONO);
 	FT_Render_Glyph(this->face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */

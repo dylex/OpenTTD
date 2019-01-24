@@ -48,6 +48,7 @@
 #include "story_base.h"
 #include "toolbar_gui.h"
 #include "framerate_type.h"
+#include "guitimer_func.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -118,12 +119,14 @@ public:
  */
 class DropDownListCompanyItem : public DropDownListItem {
 	Dimension icon_size;
+	Dimension lock_size;
 public:
 	bool greyed;
 
 	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed)
 	{
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
+		this->lock_size = GetSpriteSize(SPR_LOCK);
 	}
 
 	virtual ~DropDownListCompanyItem() {}
@@ -138,12 +141,12 @@ public:
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + 3;
+		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + 6;
 	}
 
 	uint Height(uint width) const
 	{
-		return max(this->icon_size.height + 2U, (uint)FONT_HEIGHT_NORMAL);
+		return max(max(this->icon_size.height, this->lock_size.height) + 2U, (uint)FONT_HEIGHT_NORMAL);
 	}
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
@@ -156,8 +159,12 @@ public:
 
 		int icon_offset = (bottom - top - icon_size.height) / 2;
 		int text_offset = (bottom - top - FONT_HEIGHT_NORMAL) / 2;
+		int lock_offset = (bottom - top - lock_size.height) / 2;
 
 		DrawCompanyIcon(company, rtl ? right - this->icon_size.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + icon_offset);
+		if (NetworkCompanyIsPassworded(company)) {
+			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? left + WD_FRAMERECT_LEFT : right - this->lock_size.width - WD_FRAMERECT_RIGHT, top + lock_offset);
+		}
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -167,7 +174,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 3 + this->icon_size.width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 0), top + text_offset, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 3 + this->lock_size.width : 3 + this->icon_size.width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 3 + this->lock_size.width), top + text_offset, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
@@ -1978,6 +1985,8 @@ enum MainToolbarHotkeys {
 
 /** Main toolbar. */
 struct MainToolbarWindow : Window {
+	GUITimer timer;
+
 	MainToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -1988,6 +1997,8 @@ struct MainToolbarWindow : Window {
 		this->SetWidgetDisabledState(WID_TN_FAST_FORWARD, _networking); // if networking, disable fast-forward button
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
+
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
@@ -2092,8 +2103,11 @@ struct MainToolbarWindow : Window {
 		_last_started_action = CBF_NONE;
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		if (!this->timer.Elapsed(delta_ms)) return;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		if (this->IsWidgetLowered(WID_TN_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
 			this->SetWidgetDirty(WID_TN_PAUSE);
@@ -2310,6 +2324,8 @@ enum MainToolbarEditorHotkeys {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
+	GUITimer timer;
+
 	ScenarioEditorToolbarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -2318,6 +2334,8 @@ struct ScenarioEditorToolbarWindow : Window {
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
+
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
 	}
 
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height)
@@ -2445,8 +2463,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->SetWidgetDirty(WID_TE_DATE_FORWARD);
 	}
 
-	virtual void OnTick()
+	virtual void OnRealtimeTick(uint delta_ms)
 	{
+		if (!this->timer.Elapsed(delta_ms)) return;
+		this->timer.SetInterval(MILLISECONDS_PER_TICK);
+
 		if (this->IsWidgetLowered(WID_TE_PAUSE) != !!_pause_mode) {
 			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
 			this->SetDirty();

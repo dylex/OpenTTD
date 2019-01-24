@@ -1119,6 +1119,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح ب
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :صيانة البنية التحتية: {STRING}
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :المطارات لا تنتهي صلاحيتها {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :حذر إذا فقدت المركبة {STRING}
@@ -2812,17 +2813,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}وسط الشاشة على المصنع
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}نسبة الانتاج: {YELLOW}{COMMA}%
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}يحتاج: {YELLOW}{STRING} {STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}يحتاج: {YELLOW}{STRING}{STRING}، {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}يحتاج: {YELLOW}{STRING}{STRING}, {STRING}{STRING} , {STRING}{STRING}
-############ range for requires ends
 
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}ينتج: {YELLOW}{STRING} {STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}ينتج: {YELLOW}{STRING} {STRING}, {STRING} {STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج مضاعف من 8 الى 2040
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}غير مستوى الانتاج{}نسبة مئوية حتى 800%.
@@ -3667,7 +3658,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}يوجد
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}يوجد الكثير من قطاعات محطه السكه الحديديه
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}يوجد الكثير من محطات الحافلات
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}يوجد الكثير من محطات الشاحنات
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}قريب للغايه من محطه اخرى
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}قريب للغايه من مَرسَى اخر
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}قريب للغايه من مطار اخر
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}تعذر إعاده تسميه المحطه...

@@ -681,7 +681,7 @@ struct RefitWindow : public Window {
 
 	/**
 	 * Gets the #StringID to use for displaying capacity.
-	 * @param Cargo and cargo subtype to check for capacity.
+	 * @param option Cargo and cargo subtype to check for capacity.
 	 * @return INVALID_STRING_ID if there is no capacity. StringID to use in any other case.
 	 * @post String parameters have been set.
 	 */
@@ -1676,9 +1676,8 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
-		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->vehicles.NeedResort()) {
 			StationID station = (this->vli.type == VL_STATION_LIST) ? this->vli.index : INVALID_STATION;
 
@@ -2733,7 +2732,7 @@ public:
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnGameTick()
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		bool veh_stopped = v->IsStoppedInDepot();

@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non lice
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Tuitio infrastructurae: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrastructura prodit expensa tuitionis. Expensa crescunt celerius quam pro portione magnitudini retis, ergo societates magnae affectantur magis quam parvae
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem
 
@@ -3502,20 +3503,10 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Movere c
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Quantitas productionis: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Haec industria mox claudetur!
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Postulat: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}, {STRING.acc}{STRING}
-############ range for requires ends
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Postulat:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING.acc}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} manet{STRING}
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Efficit: {YELLOW}{STRING.acc}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Efficit: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}
-############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mutare productionem (per octo multiplicatur, ad 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mutare productionem (centesima, ad 800%)
@@ -4438,7 +4429,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Nimis st
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Nimis partes stationum ferriviariarum adsunt
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Nimis stationes laophoricae adsunt
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Nimis stationes autoplaustricae adsunt
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Nimis prope aliam stationem
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Nimis prope aliud navale
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Nimis prope alium aeroportum
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Non licet stationem renominare...

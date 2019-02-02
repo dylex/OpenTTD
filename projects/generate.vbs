@@ -10,6 +10,16 @@ Option Explicit
 Dim FSO
 Set FSO = CreateObject("Scripting.FileSystemObject")
 
+' openttd_vs142.sln             is for MSVC 2019
+' openttd_vs142.vcxproj         is for MSVC 2019
+' openttd_vs142.vcxproj.filters is for MSVC 2019
+' langs_vs142.vcxproj           is for MSVC 2019
+' strgen_vs142.vcxproj          is for MSVC 2019
+' strgen_vs142.vcxproj.filters  is for MSVC 2019
+' generate_vs142.vcxproj        is for MSVC 2019
+' version_vs142.vcxproj         is for MSVC 2019
+' basesets_vs142.vcxproj        is for MSVC 2019
+
 ' openttd_vs141.sln             is for MSVC 2017
 ' openttd_vs141.vcxproj         is for MSVC 2017
 ' openttd_vs141.vcxproj.filters is for MSVC 2017
@@ -18,6 +28,7 @@ Set FSO = CreateObject("Scripting.FileSystemObject")
 ' strgen_vs141.vcxproj.filters  is for MSVC 2017
 ' generate_vs141.vcxproj        is for MSVC 2017
 ' version_vs141.vcxproj         is for MSVC 2017
+' basesets_vs141.vcxproj        is for MSVC 2017
 
 ' openttd_vs140.sln             is for MSVC 2015
 ' openttd_vs140.vcxproj         is for MSVC 2015
@@ -27,6 +38,7 @@ Set FSO = CreateObject("Scripting.FileSystemObject")
 ' strgen_vs140.vcxproj.filters  is for MSVC 2015
 ' generate_vs140.vcxproj        is for MSVC 2015
 ' version_vs140.vcxproj         is for MSVC 2015
+' basesets_vs140.vcxproj        is for MSVC 2015
 
 Sub safety_check(filename)
 	Dim file, line, regexp, list
@@ -267,6 +279,48 @@ Sub load_settings_data(dir, ByRef vcxproj, ByRef command, ByRef files)
 	Next
 End Sub
 
+Sub load_baseset_data(dir, langdir, ByRef vcxproj, ByRef files, ByRef langs)
+	Dim folder, file, ext, first_time
+	Set folder = FSO.GetFolder(langdir)
+	langs = "    <Langs>"
+	For Each file In folder.Files
+		If first_time <> 0 Then
+			langs = langs & ";"
+		Else
+			first_time = 1
+		End If
+		file = FSO.GetFileName(file)
+		ext = FSO.GetExtensionName(file)
+		langs = langs & "..\src\lang\" & file
+	Next
+	langs = langs & "</Langs>"
+	first_time = 0
+	Set folder = FSO.GetFolder(dir)
+	For Each file In folder.Files
+		file = FSO.GetFileName(file)
+		ext = FSO.GetExtensionName(file)
+		If ext = "obm" Or ext = "obg" Or ext = "obs" Then
+			If first_time <> 0 Then
+				vcxproj = vcxproj & vbCrLf
+				files = files & vbCrLf
+			Else
+				first_time = 1
+			End If
+			vcxproj = vcxproj & _
+			"    <CustomBuild Include=" & Chr(34) & "..\media\baseset\" & file & Chr(34) & ">" & vbCrLf & _
+			"      <Message Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">Generating " & file & " baseset metadata file</Message>" & vbCrLf & _
+			"      <Command Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">cscript //nologo ..\media\baseset\translations.vbs " & Chr(34) & "%(FullPath)" & Chr(34) & " " & Chr(34) & "$(OutputPath)" & file & Chr(34) & " ..\src\lang ..\bin\baseset\orig_extra.grf</Command>" & vbCrLf & _
+			"      <AdditionalInputs Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">$(Langs);..\bin\baseset\orig_extra.grf;%(AdditionalInputs)</AdditionalInputs>" & vbCrLf & _
+			"      <Outputs Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\bin\baseset\" & file & ";%(Outputs)</Outputs>" & vbCrLf & _
+			"    </CustomBuild>"
+			files = files & _
+			"    <CustomBuild Include=" & Chr(34) & "..\media\baseset\" & file & Chr(34) & ">" & vbCrLf & _
+			"      <Filter>Baseset Metadata</Filter>" & vbCrLf & _
+			"    </CustomBuild>"
+		End If
+	Next
+End Sub
+
 Sub generate(data, dest, data2)
 	Dim srcfile, destfile, line
 	WScript.Echo "Generating " & FSO.GetFileName(dest) & "..."
@@ -324,6 +378,8 @@ generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs140.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs140.vcxproj.filters", openttdfilters
 generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs141.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs141.vcxproj.filters", openttdfilters
+generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs142.vcxproj", Null
+generate openttdfiles, ROOT_DIR & "/projects/openttd_vs142.vcxproj.filters", openttdfilters
 
 Dim langvcxproj, langfiles
 load_lang_data ROOT_DIR & "/src/lang", langvcxproj, langfiles
@@ -331,6 +387,8 @@ generate langvcxproj, ROOT_DIR & "/projects/langs_vs140.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs140.vcxproj.filters", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs141.vcxproj", Null
 generate langfiles, ROOT_DIR & "/projects/langs_vs141.vcxproj.filters", Null
+generate langvcxproj, ROOT_DIR & "/projects/langs_vs142.vcxproj", Null
+generate langfiles, ROOT_DIR & "/projects/langs_vs142.vcxproj.filters", Null
 
 Dim settingsvcxproj, settingscommand, settingsfiles
 load_settings_data ROOT_DIR & "/src/table", settingsvcxproj, settingscommand, settingsfiles
@@ -338,3 +396,14 @@ generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs140.vcxproj", setting
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs140.vcxproj.filters", Null
 generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs141.vcxproj", settingscommand
 generate settingsfiles, ROOT_DIR & "/projects/settings_vs141.vcxproj.filters", Null
+generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs142.vcxproj", settingscommand
+generate settingsfiles, ROOT_DIR & "/projects/settings_vs142.vcxproj.filters", Null
+
+Dim basesetvcxproj, basesetfiles, basesetlangs
+load_baseset_data ROOT_DIR & "/media/baseset", ROOT_DIR & "/src/lang", basesetvcxproj, basesetfiles, basesetlangs
+generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs140.vcxproj", basesetlangs
+generate basesetfiles, ROOT_DIR & "/projects/basesets_vs140.vcxproj.filters", Null
+generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs141.vcxproj", basesetlangs
+generate basesetfiles, ROOT_DIR & "/projects/basesets_vs141.vcxproj.filters", Null
+generate settingsvcxproj, ROOT_DIR & "/projects/basesets_vs142.vcxproj", settingscommand
+generate settingsfiles, ROOT_DIR & "/projects/basesets_vs142.vcxproj.filters", Null

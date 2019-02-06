@@ -319,6 +319,15 @@ void Ship::UpdateDeltaXY()
 	this->x_extent      = bb[1];
 	this->y_extent      = bb[0];
 	this->z_extent      = 6;
+
+	if (this->direction != this->rotation) {
+		/* If we are rotating, then it is possible the ship was moved to its next position. In that
+		 * case, because we are still showing the old direction, the ship will appear to glitch sideways
+		 * slightly. We can work around this by applying an additional offset to make the ship appear
+		 * where it was before it moved. */
+		this->x_offs -= this->x_pos - this->rotation_x_pos;
+		this->y_offs -= this->y_pos - this->rotation_y_pos;
+	}
 }
 
 /**
@@ -541,6 +550,56 @@ static const byte _ship_subcoord[4][6][3] = {
 	}
 };
 
+/**
+ * Test if a ship is in the centre of a lock and should move up or down.
+ * @param v Ship being tested.
+ * @return 0 if ship is not moving in lock, or -1 to move down, 1 to move up.
+ */
+static int ShipTestUpDownOnLock(const Ship *v)
+{
+	/* Suitable tile? */
+	if (!IsTileType(v->tile, MP_WATER) || !IsLock(v->tile) || GetLockPart(v->tile) != LOCK_PART_MIDDLE) return 0;
+
+	/* Must be at the centre of the lock */
+	if ((v->x_pos & 0xF) != 8 || (v->y_pos & 0xF) != 8) return 0;
+
+	DiagDirection diagdir = GetInclinedSlopeDirection(GetTileSlope(v->tile));
+	assert(IsValidDiagDirection(diagdir));
+
+	if (DirToDiagDir(v->direction) == diagdir) {
+		/* Move up */
+		return (v->z_pos < GetTileMaxZ(v->tile) * (int)TILE_HEIGHT) ? 1 : 0;
+	} else {
+		/* Move down */
+		return (v->z_pos > GetTileZ(v->tile) * (int)TILE_HEIGHT) ? -1 : 0;
+	}
+}
+
+/**
+ * Test and move a ship up or down in a lock.
+ * @param v Ship to move.
+ * @return true iff ship is moving up or down in a lock.
+ */
+static bool ShipMoveUpDownOnLock(Ship *v)
+{
+	/* Moving up/down through lock */
+	int dz = ShipTestUpDownOnLock(v);
+	if (dz == 0) return false;
+
+	if (v->cur_speed != 0) {
+		v->cur_speed = 0;
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
+	}
+
+	if ((v->tick_counter & 7) == 0) {
+		v->z_pos += dz;
+		v->UpdatePosition();
+		v->UpdateViewport(true, true);
+	}
+
+	return true;
+}
+
 static void ShipController(Ship *v)
 {
 	uint32 r;
@@ -573,6 +632,8 @@ static void ShipController(Ship *v)
 		}
 		return;
 	}
+
+	if (ShipMoveUpDownOnLock(v)) return;
 
 	if (!ShipAccelerate(v)) return;
 
@@ -678,6 +739,9 @@ static void ShipController(Ship *v)
 					/* Stop for rotation */
 					v->cur_speed = 0;
 					v->direction = new_direction;
+					/* Remember our current location to avoid movement glitch */
+					v->rotation_x_pos = v->x_pos;
+					v->rotation_y_pos = v->y_pos;
 					break;
 			}
 		}
@@ -695,7 +759,6 @@ static void ShipController(Ship *v)
 	/* update image of ship, as well as delta XY */
 	v->x_pos = gp.x;
 	v->y_pos = gp.y;
-	v->z_pos = GetSlopePixelZ(gp.x, gp.y);
 
 getout:
 	v->UpdatePosition();
@@ -704,6 +767,9 @@ getout:
 
 reverse_direction:
 	v->direction = ReverseDir(v->direction);
+	/* Remember our current location to avoid movement glitch */
+	v->rotation_x_pos = v->x_pos;
+	v->rotation_y_pos = v->y_pos;
 	v->cur_speed = 0;
 	v->path.clear();
 	goto getout;

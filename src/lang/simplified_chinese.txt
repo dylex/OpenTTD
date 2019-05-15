@@ -989,6 +989,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :正常大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :两倍大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择要使用的基础图形组
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 文件{}未找到或不正确
@@ -1692,7 +1694,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}货物�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}竞争
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}电脑玩家
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :原始的
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(推荐)
 
@@ -1775,13 +1776,9 @@ STR_QUIT_NO                                                     :{BLACK}否
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_MORPHOS                                              :MorphOS
-STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
@@ -1810,7 +1807,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}改变�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}开启可调整产量模式：{ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}新色彩方案
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}显示总体配色方案
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}显示列车配色方案
@@ -2072,9 +2068,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}客户端列表
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :旁观
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
@@ -2089,7 +2085,6 @@ STR_NETWORK_CLIENT                                              :客户端
 STR_NETWORK_SPECTATORS                                          :旁观者
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输入您想赠与的资金数
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}旁观者
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码
@@ -2410,6 +2405,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}建设电车隧道
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}建设/拆除 公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}建设/拆除 电车轨道
+
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}汽车车库的方向……
@@ -3285,8 +3281,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}铁路：
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}信号灯
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}道路：
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}普通道路
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}电车线路
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}水运：
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}运河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}站台：
@@ -3362,6 +3356,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分组汽车
 STR_GROUP_DEFAULT_SHIPS                                         :未分组船只
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分组飞机
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}组 - 点击一个组别以显示所有隶属此组的车辆。拖曳组别标签以重新排列组别的次序和层级。
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}创建分组
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}删除分组
@@ -3387,10 +3382,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :购买电气化
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :购买单轨列车
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :购买磁悬浮列车
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新列车
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :购买汽车
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新列车
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :购买船只
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 重量：{GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
@@ -3424,10 +3422,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}购买�
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}购买船只
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}购买飞机
 
+
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}购买选定的列车，按住 Shift 键单击可以显示所需资金
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}购买选定的汽车，按住 Shift 键单击可以显示所需资金
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}购买选定的船只，按住 Shift 键单击可以显示所需资金
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}购买选定的飞机，按住 Shift 键单击可以显示所需资金
+
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}重命名
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}重命名
@@ -3537,12 +3537,15 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将�
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自供货商的消息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前试用一年吗？
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :火车机车
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :汽车
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
-STR_ENGINE_PREVIEW_SHIP                                         :船只
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :汽车
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :飞机
+STR_ENGINE_PREVIEW_SHIP                                         :船只
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY_LONG}/年{}运载能力： {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{6:FORCE}{}运行费用{4:CURRENCY_LONG}/年{}运载能力：{5:CARGO_LONG}
@@ -3588,6 +3591,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :普通列车
 STR_REPLACE_ELRAIL_VEHICLES                                     :电力机车
 STR_REPLACE_MONORAIL_VEHICLES                                   :单轨列车
 STR_REPLACE_MAGLEV_VEHICLES                                     :磁悬浮列车
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动从最前面的挂车去掉若干节以保证列车长度不变
@@ -4308,7 +4312,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必须�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的轨道
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必须先拆除轨道
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}这是单行道或这条路被堵死了
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}该轨道类型不允许建设平交道
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}该轨道类型不允许建设平交道
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在这里设置信号灯……
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在这里铺设轨道……
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能从这里拆除轨道……

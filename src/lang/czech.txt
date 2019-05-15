@@ -1076,6 +1076,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normální
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojnásobná velikost
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Čtyřnásobná velikost
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chybějící{P "" "" ch}/poškozen{P ý é ých} soubor{P "" y ů}
@@ -1776,7 +1778,6 @@ STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distrib
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Původní
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(doporučený)
 
@@ -1860,13 +1861,9 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unixu
 STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_MORPHOS                                              :MorphOS
-STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
@@ -1895,7 +1892,6 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Změnit 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit změnu produkce průmyslu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nové barevné schéma
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Zobrazit všeobecná barevná schémata
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazit barevná schémata pro vlaky
@@ -2157,9 +2153,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server j
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společnost je chráněná. Napiš heslo
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Seznam hráčů
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Pozorovat
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nová společnost
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam hráčů
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :Pozorovat
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nová společnost
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Vyhodit
@@ -2174,7 +2170,6 @@ STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napiš částku, kterou chceš poskytnout
-STR_NETWORK_TOOLBAR_LIST_SPECTATOR                              :{BLACK}Pozorovatel
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukládat zadané heslo
@@ -2496,6 +2491,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Postavit
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postavit tramvajový tunel. Stisknutý Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Stavět nebo bourat silnici nebo zastávku
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
+
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientace garáže
@@ -3380,8 +3376,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastr
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Železniční oblasti:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semafory
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Silniční oblasti:
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Silnice
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramvajové koleje
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vodní oblasti:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Průplavy
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
@@ -3458,6 +3452,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nezařazená si
 STR_GROUP_DEFAULT_SHIPS                                         :Nezařazené lodě
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezařazená letadla
 
+
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Skupiny - Kliknutím na skupinu se zobrazí seznam vozidel ve skupině. Přetáhnutím skupin je uspořádáš.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknutím vytvoříš skupinu
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Vymazat vybranou skupinu
@@ -3483,10 +3478,13 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrick
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové lokomotivy a vagony pro monorail
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové lokomotivy a vagony Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nová železniční vozidla
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nová silniční vozidla
+
+############ range for vehicle availability starts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nová železniční vozidla
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lodě
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nové letadlo
+############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Hmotnost: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
@@ -3520,10 +3518,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koupit v
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koupit loď
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koupit letadlo
 
+
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kup označený vagon/lokomotivu. Stisknutý Shift pro zobrazení odhadu ceny
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koupit označené vozidlo. Stisknutý Shift pro zobrazení odhadu ceny
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koupit označenou loď. Stisknutý Shift pro zobrazení odhadu ceny
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koupit označené letadlo. Stisknutý Shift pro zobrazení odhadu ceny
+
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Přejmenovat
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Přejmenovat
@@ -3633,15 +3633,18 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chceš 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ý ou é é é é á} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :lokomotivu
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
-STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotiva pro monorail
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :lokomotivu pro monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva Maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :lokomotivu Maglev
+
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
+
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
+STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnost: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY_LONG} ročně{}Kapacita: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Váha: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Síla: {POWER}  Maximální tažná síla: {6:FORCE}{}Provozní náklady: {4:CURRENCY_LONG}/rok{}Kapacita: {5:CARGO_LONG}
@@ -3687,6 +3690,7 @@ STR_REPLACE_RAIL_VEHICLES                                       :Železniční l
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lokomotivy
 STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotivy pro monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotivy Maglev
+
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonů: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylepšování vlaků může udržovat stejnou délku vlaku odstraňovaním vagonů (od začátku vlaku), pokud by změna mašiny vlak prodloužila
@@ -4339,7 +4343,6 @@ STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... tato
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... průjezdné zastávky nemohou být v zatáčce
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... průjezdné zastávky nemohou být na křižovatce
-STR_ERROR_DRIVE_THROUGH_ON_ONEWAY_ROAD                          :{WHITE}... silnice je jednosměrná nebo uzavřená.
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nelze odstranit část stanice...
@@ -4409,7 +4412,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Je nutn�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žádné použitelné koleje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Je nutné nejprve odstranit koleje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Silnice je jednosměrná nebo zablokovaná
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Železniční přejezd není povolen pro tento typ kolejí
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Železniční přejezd není povolen pro tento typ kolejí
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Zde nelze postavit semafory...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Zde nelze postavit koleje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Odsud nelze odstranit koleje...

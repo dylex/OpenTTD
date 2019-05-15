@@ -519,6 +519,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 
 
+
+
 # Custom currency window
 
 
@@ -660,13 +662,9 @@ STR_QUIT_NO                                                     :{BLACK}Ҫук
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_MORPHOS                                              :MorphOS
-STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
@@ -861,6 +859,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 
 # Road construction toolbar
+
 
 # Road depot construction window
 
@@ -1136,7 +1135,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 
+
 # Build vehicle window
+
+
+############ range for vehicle availability starts
+############ range for vehicle availability ends
+
 
 
 
@@ -1174,7 +1179,11 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 # Engine preview window
 
 
+
+
+
 # Autoreplace window
+
 
 
 

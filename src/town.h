@@ -46,7 +46,7 @@ struct TownCache {
 	uint32 num_houses;                        ///< Amount of houses
 	uint32 population;                        ///< Current population of people
 	ViewportSign sign;                        ///< Location of name sign, UpdateVirtCoord updates this
-	PartOfSubsidyByte part_of_subsidy;        ///< Is this town a source/destination of a subsidy?
+	PartOfSubsidy part_of_subsidy;            ///< Is this town a source/destination of a subsidy?
 	uint32 squared_town_zone_radius[HZB_END]; ///< UpdateTownRadius updates this given the house count
 	BuildingCounts<uint16> building_counts;   ///< The number of each type of building in the town
 };
@@ -61,7 +61,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
-	char *name;                    ///< Custom town name. If NULL, the town was not renamed and uses the generated name.
+	char *name;                    ///< Custom town name. If nullptr, the town was not renamed and uses the generated name.
 
 	byte flags;                    ///< See #TownFlags.
 
@@ -72,7 +72,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	/* Company ratings. */
 	CompanyMask have_ratings;      ///< which companies have a rating
 	uint8 unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
-	CompanyByte exclusivity;       ///< which company has exclusivity
+	CompanyID exclusivity;         ///< which company has exclusivity
 	uint8 exclusive_counter;       ///< months till the exclusivity expires
 	int16 ratings[MAX_COMPANIES];  ///< ratings of each company for this town
 
@@ -88,17 +88,18 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	CargoTypes cargo_produced;       ///< Bitmap of all cargoes produced by houses in this town.
 	AcceptanceMatrix cargo_accepted; ///< Bitmap of cargoes accepted by houses for each 4*4 map square of the town.
 	CargoTypes cargo_accepted_total; ///< NOSAVE: Bitmap of all cargoes accepted by houses in this town.
+	StationList stations_near;       ///< NOSAVE: List of nearby stations.
 
-	uint16 time_until_rebuild;     ///< time until we rebuild a house
+	uint16 time_until_rebuild;       ///< time until we rebuild a house
 
-	uint16 grow_counter;           ///< counter to count when to grow, value is smaller than or equal to growth_rate
-	uint16 growth_rate;            ///< town growth rate
+	uint16 grow_counter;             ///< counter to count when to grow, value is smaller than or equal to growth_rate
+	uint16 growth_rate;              ///< town growth rate
 
-	byte fund_buildings_months;    ///< fund buildings program in action?
-	byte road_build_months;        ///< fund road reconstruction in action?
+	byte fund_buildings_months;      ///< fund buildings program in action?
+	byte road_build_months;          ///< fund road reconstruction in action?
 
-	bool larger_town;              ///< if this is a larger town and should grow more quickly
-	TownLayoutByte layout;         ///< town specific road layout
+	bool larger_town;                ///< if this is a larger town and should grow more quickly
+	TownLayout layout;               ///< town specific road layout
 
 	std::list<PersistentStorage *> psa_list;
 
@@ -143,6 +144,9 @@ uint32 GetWorldPopulation();
 void UpdateAllTownVirtCoords();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
+
+void RebuildTownKdtree();
+
 
 /**
  * Action types that a company must ask permission for to a town authority.
@@ -229,7 +233,7 @@ template <class T>
 void MakeDefaultName(T *obj)
 {
 	/* We only want to set names if it hasn't been set before, or when we're calling from afterload. */
-	assert(obj->name == NULL || obj->town_cn == UINT16_MAX);
+	assert(obj->name == nullptr || obj->town_cn == UINT16_MAX);
 
 	obj->town = ClosestTownFromTile(obj->xy, UINT_MAX);
 
@@ -253,7 +257,7 @@ void MakeDefaultName(T *obj)
 		T *lobj = T::GetIfValid(cid);
 
 		/* check only valid waypoints... */
-		if (lobj != NULL && obj != lobj) {
+		if (lobj != nullptr && obj != lobj) {
 			/* only objects within the same city and with the same type */
 			if (lobj->town == obj->town && lobj->IsOfType(obj)) {
 				/* if lobj->town_cn < next, uint will overflow to '+inf' */
@@ -294,5 +298,7 @@ static inline uint16 TownTicksToGameTicks(uint16 ticks) {
 
 
 extern CargoTypes _town_cargoes_accepted;
+
+RoadType GetTownRoadType(const Town *t);
 
 #endif /* TOWN_H */

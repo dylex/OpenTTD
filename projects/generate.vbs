@@ -179,8 +179,9 @@ Sub load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
 						line = "MSVC" Or _
 						line = "DIRECTMUSIC" Or _
 						line = "AI" Or _
-						line = "SSE" Or _
-						line = "HAVE_THREAD" _
+						line = "USE_SSE" Or _
+						line = "USE_XAUDIO2" Or _
+						line = "USE_THREADS" _
 					) Then skip = skip + 1
 					deep = deep + 1
 				Case "#"
@@ -405,5 +406,5 @@ generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs140.vcxproj", basesetl
 generate basesetfiles, ROOT_DIR & "/projects/basesets_vs140.vcxproj.filters", Null
 generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs141.vcxproj", basesetlangs
 generate basesetfiles, ROOT_DIR & "/projects/basesets_vs141.vcxproj.filters", Null
-generate settingsvcxproj, ROOT_DIR & "/projects/basesets_vs142.vcxproj", settingscommand
-generate settingsfiles, ROOT_DIR & "/projects/basesets_vs142.vcxproj.filters", Null
+generate basesetvcxproj, ROOT_DIR & "/projects/basesets_vs142.vcxproj", basesetlangs
+generate basesetfiles, ROOT_DIR & "/projects/basesets_vs142.vcxproj.filters", Null
